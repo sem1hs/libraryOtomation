@@ -16,15 +16,22 @@ public class BookService {
         return this.bookRepository.findAllBooks();
     }
 
+    public Book getBookById(int id) {
+        return this.bookRepository.findBookById(id);
+    }
+
     public Book saveBook(Book book) {
         return this.bookRepository.createBook(book);
     }
 
-    public Book getBookById(int id){
-        return this.bookRepository.findBookById(id);
+    public String deleteAllBooks() {
+        this.bookRepository.clearAllBooks();
+        return "Books successfully deleted";
     }
 
-    public void deleteAllBooks(){
-        this.bookRepository.clearAllBooks();
+    public String deleteBookById(int id){
+        this.bookRepository.clearBookById(id);
+        return "Book successfully deleted";
     }
+
 }

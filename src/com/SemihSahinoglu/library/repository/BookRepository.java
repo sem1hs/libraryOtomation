@@ -60,12 +60,15 @@ public class BookRepository {
     }
 
     public Book createBook(Book book) {
-        String query = "INSERT INTO books (book_name) VALUES (?)";
+        String query = "INSERT INTO books (book_name,book_price,stock) VALUES (?,?,?)";
 
         try (Connection conn = DbConnection.getConnection();
              PreparedStatement statement = conn.prepareStatement(query)) {
 
             statement.setString(1, book.getBookName());
+            statement.setInt(2, book.getBookPrice());
+            statement.setInt(3, book.getStock());
+
             int affectRows = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -82,6 +85,18 @@ public class BookRepository {
         ) {
             int affectRows = statement.executeUpdate();
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void clearBookById(int bookId) {
+        String query = "DELETE FROM books WHERE id = ?";
+        try (Connection conn = DbConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(query);
+        ) {
+            statement.setInt(1, bookId);
+            int affectRows = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

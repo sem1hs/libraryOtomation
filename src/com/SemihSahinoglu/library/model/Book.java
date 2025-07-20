@@ -19,8 +19,14 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public Book(int id, String bookName, int bookPrice, int stock) {
+    public Book(int id,String bookName, int bookPrice, int stock) {
         this.id = id;
+        this.bookName = bookName;
+        this.bookPrice = bookPrice;
+        this.stock = stock;
+    }
+
+    public Book(String bookName, int bookPrice, int stock) {
         this.bookName = bookName;
         this.bookPrice = bookPrice;
         this.stock = stock;

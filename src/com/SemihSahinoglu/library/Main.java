@@ -11,5 +11,6 @@ public class Main {
     public static void main(String[] args) {
         bookService.getAllBooks().forEach(System.out::println);
 
+        bookService.getAllBooks().forEach(System.out::println);
     }
 }
